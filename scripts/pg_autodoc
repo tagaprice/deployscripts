@@ -1,0 +1,27 @@
+#!/bin/bash
+
+. ./include.sh
+depends check_properties
+
+mkdir -p "$DATADIR/tagaprice.github.com/pg_autodoc" || exit 1
+cd "$DATADIR/tagaprice.github.com/pg_autodoc" || exit 1
+
+#
+# read DB configuration
+#
+cfgFile="$DATADIR/tagaprice/src/main/webapp/WEB-INF/classes/jdbc.properties"
+dbHost="`cat $cfgFile|grep '^host='|cut -d= -f2`"
+dbPort="`cat $cfgFile|grep '^port='|cut -d= -f2`"
+dbName="`cat $cfgFile|grep '^db='|cut -d= -f2`"
+dbUser="`cat $cfgFile|grep '^user='|cut -d= -f2`"
+dbPwd="`cat $cfgFile|grep '^pwd='|cut -d= -f2`"
+
+# create psql parameters
+if [ -n "$dbHost" ]; then dbHost="-h $dbHost"; fi
+if [ -n "$dbPort" ]; then dbPort="-p $dbPort"; fi
+if [ -n "$dbName" ]; then dbName="-d $dbName"; fi
+if [ -n "$dbUser" ]; then dbUser="-U $dbUser"; fi
+if [ -n "$dbPwd" ]; then dbPwd="--password=$dbPwd"; fi
+
+postgresql_autodoc $dbHost $dbPort $dbName $dbUser $dbPwd || fail "couldn't create the database documentation"
+
