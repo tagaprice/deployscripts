@@ -16,7 +16,8 @@ function depends() {
 		if [ -f "$logfile.0" ]; then
 			true
 		elif [ -f "$logfile".* ]; then
-			echo "failed dependency: '$script'" >&2
+			echo "failed dependency: '$script' (in $0)" >&2
+			exit 1
 		else
 			cd "$BASEDIR"
 
