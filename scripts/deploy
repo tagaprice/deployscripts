@@ -3,6 +3,7 @@
 . ./include.sh
 
 depends git_pull
+depends check_properties
 
 cd "$DATADIR/tagaprice"
 ./deploy.sh
