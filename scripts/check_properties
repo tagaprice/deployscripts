@@ -1,0 +1,18 @@
+#!/bin/bash
+
+. ./include.sh
+
+depends git_pull
+
+cd "$DATADIR/tagaprice"
+
+rc=0
+
+for propFile in `find src -name '*.properties.example'|sed 's/\.example$//'`; do
+	if ! [ -x "$propFile" ]; then
+		echo "Error: Property file '$propFile' not found!" >&2
+		rc=1
+	fi
+done
+
+exit $rc
