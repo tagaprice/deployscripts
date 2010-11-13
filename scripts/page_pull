@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# pulling the repository behind http://tagaprice.github.com/
+
+cd "$DATADIR/tagaprice.github.com"
+git pull

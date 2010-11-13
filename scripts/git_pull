@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cd "$DATADIR/tagaprice"
+git pull

@@ -1,0 +1,9 @@
+[submodule "data/wiki"]
+	path = data/wiki
+	url = git@github.com:tagaprice/tagaprice.wiki.git
+[submodule "data/tagaprice.github.com"]
+	path = data/tagaprice.github.com
+	url = git@github.com:tagaprice/tagaprice.github.com.git
+[submodule "data/tagaprice"]
+	path = data/tagaprice
+	url = git@github.com:tagaprice/tagaprice.git

@@ -1,0 +1,13 @@
+#!/bin/bash
+
+. ./include.sh
+
+depends git_pull
+
+cd "$DATADIR/tagaprice" || fail tagaprice folder not found
+rm -rf "$DATADIR/tagaprice/target/site/"
+mvn site || fail couldn't create 
+
+
+rm -rf "$DATADIR/tagaprice.github.com/mvn_site" || fail couldn\'t delete old mvn site folder
+cp -pr "$DATADIR/tagaprice/target/site/" "$DATADIR/tagaprice.github.com/mvn_site" || fail couldn\'t copy mvn site to the target path

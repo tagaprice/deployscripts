@@ -1,0 +1,8 @@
+#!/bin/bash
+
+. ./include.sh
+
+depends git_pull
+
+cd "$DATADIR/tagaprice"
+./deploy.sh
