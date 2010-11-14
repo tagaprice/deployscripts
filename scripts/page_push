@@ -8,6 +8,5 @@ cd "$DATADIR/tagaprice.github.com" || exit 1
 
 date=`date +%Y/%m/%d`
 
-git add .
-git commit -m "autogen@$date"
+git commit . -m "autogen@$date"
 git push
