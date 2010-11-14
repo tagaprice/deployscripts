@@ -1,13 +1,5 @@
 #!/bin/bash
 
-if [ -z "$BASEDIR" ]; then
-	export BASEDIR=$(cd `dirname $0`; pwd)
-fi
-
-export DATADIR="$BASEDIR/data"
-export SCRIPTDIR="$BASEDIR/scripts"
-export LOGDIR="$BASEDIR/log"
-
 function depends() {
 	script="$1"
 	filename="$SCRIPTDIR/$script"

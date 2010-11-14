@@ -1,13 +1,21 @@
 #!/bin/bash
 
+if [ -z "$BASEDIR" ]; then
+	export BASEDIR=$(cd `dirname $0`; pwd)
+fi
+
+export DATADIR="$BASEDIR/data"
+export SCRIPTDIR="$BASEDIR/scripts"
+export LOGDIR="$BASEDIR/log"
+
+cd $BASEDIR
+
 . ./include.sh
 
 script="$1"
 DEPLOY_SCRIPTS=''
 
 # compiler
-cd $BASEDIR
-
 rm "$LOGDIR" -rf
 mkdir -p "$LOGDIR"
 
