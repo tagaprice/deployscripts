@@ -5,10 +5,13 @@
 depends git_pull
 depends check_properties
 
+SRCDIR="$DATADIR/tagaprice/target/site/"
+TGTDIR="$DATADIR/tagaprice.github.com/mvn_site"
+
 cd "$DATADIR/tagaprice" || fail tagaprice folder not found
-rm -rf "$DATADIR/tagaprice/target/site/"
-mvn site || fail couldn't create 
+rm -rf "$SRCDIR"
+mvn site || fail "couldn't create mvn site documentation"
 
 
-rm -rf "$DATADIR/tagaprice.github.com/mvn_site" || fail couldn\'t delete old mvn site folder
-cp -pr "$DATADIR/tagaprice/target/site/" "$DATADIR/tagaprice.github.com/mvn_site" || fail couldn\'t copy mvn site to the target path
+rm -rf "$TGTDIR" || fail couldn\'t delete old mvn site target path
+cp -pr "$SRCDIR" "$TGTDIR" || fail couldn\'t copy mvn site to the target path
