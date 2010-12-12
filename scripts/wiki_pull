@@ -3,4 +3,4 @@
 # just pulling a backup of the github wiki
 
 cd "$DATADIR/wiki"
-git pull
+git pull origin master
